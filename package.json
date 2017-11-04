@@ -1,0 +1,36 @@
+{
+    "name": "harmony-framework",
+    "version": "1.0.0",
+    "description": "PHP Framework build in under Slim & Symfony",
+    "main": "index.js",
+    "directories": {
+        "test": "tests"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "PHP",
+        "Framework",
+        "MVC",
+        "Slim",
+        "Symfoni",
+        "Twig",
+        "Betta",
+        "Dev",
+        "Indonesia"
+    ],
+    "author": "Betta Dev Indonesia <bettadevindonesia@gmail.com> (https://github.com/bettaeducation)",
+    "license": "MIT",
+    "dependencies": {
+        "bootstrap": "4.0.0-beta",
+        "font-awesome": "^4.7.0",
+        "jquery": "^3.2.1",
+        "popper.js": "^1.11.1"
+    },
+    "devDependencies": {
+        "browser-sync": "^2.18.13",
+        "gulp": "^3.9.1",
+        "gulp-sass": "^3.1.0"
+    }
+}

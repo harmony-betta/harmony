@@ -1,0 +1,8 @@
+{% extends 'templates/email.twig' %}
+
+{% block content %}
+
+    <p style="Margin-top: 0;Margin-bottom: 0;">Hai {{ user.name }},</p>
+    <p style="Margin-top: 20px;Margin-bottom: 20px;">{{ email|raw }}</p>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'templates/app.twig' %}
+
+{% block content %}
+
+    <div class="form-container">
+    <div class="card">
+        <h4 class="card-header">Send Email to User</h4>
+            <div class="card-body">                
+
+                <form method="POST" action="{{ path_for('email') }}" autocomplete="on">
+                    {{ csrf.field | raw }}
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="text" class="form-control {{ errors.email ? 'is-invalid' : '' }}" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter email" value="{{ old.email }}">
+                        {% if errors.email %}
+                            <small id="emailHelp" class="form-text text-danger">*{{ errors.email | first }}</small>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="subject" class="form-control {{ errors.subject ? 'is-invalid' : '' }}" name="subject" id="subject" placeholder="subject">
+                        {% if errors.subject %}
+                            <small id="subjectHelp" class="form-text text-danger">*{{ errors.subject | first }}</small>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="body">Body</label>
+                        <textarea class="form-control {{ errors.body ? 'is-invalid' : '' }}" name="body" id="body" placeholder="body"></textarea>
+                        {% if errors.body %}
+                            <small id="bodyHelp" class="form-text text-danger">*{{ errors.body | first }}</small>
+                        {% endif %}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Email</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

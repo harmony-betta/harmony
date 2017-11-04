@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Harmony Framework</title>
+    <style>
+      a,
+      button {
+          cursor: pointer;
+      }
+
+      .container-email {
+          width: 60%;
+          margin: auto;
+      }
+
+      .body-email {
+          text-indent: 20px;
+          padding: 10px;
+      }
+
+      .footer-email {
+          text-align: center;
+          font-size: 13px;
+          padding: 20px;
+          background-color: #f3f3f3;
+          border-top: 2px solid #e3e3e3;
+      }
+
+      img{
+        width: 100% !important;
+      }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-email">
+      <img src="https://i1.createsend1.com/ei/j/B4/BB0/84E/062157/csfinal/harmony-framework1.png">
+      <div class="body-email">
+        {% block content %}{% endblock %}
+      </div>
+      <div class="footer-email">
+        Harmony Framework
+        <hr>
+        Jl. Perintis Kemerdekaan, Gg. Mawar, RT 09 RW VI Tuguran, No. 149, Magelang Utara, Potrobangsan, Magelang Utara, Kota Magelang, Jawa Tengah 56125
+      </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="container">
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <a class="navbar-brand" href="{% if auth.check is empty and admin.checkAdmin is empty %} {{ path_for('home') }} {% elseif auth.check %} {{ path_for('auth.home') }} {% elseif admin.checkAdmin %} {{ path_for('admin.home') }} {% endif %}">Harmony Framework</a>
+      <ul class="navbar-nav ml-auto">
+      {% if auth.check or admin.checkAdmin %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {% if auth.check %} {{ auth.user.name }} {% elseif admin.checkAdmin %} {{ admin.admin.name }} {% endif %}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          {% if auth.check %}
+            <a class="dropdown-item" href="{{ path_for('auth.password.change') }}">Change Password</a>
+            <a class="dropdown-item" href="{{ path_for('auth.signout') }}">Sign Out</a>
+          {% elseif admin.checkAdmin %}
+            <a class="dropdown-item" href="{{ path_for('admin.password.change') }}">Change Password</a>
+            <a class="dropdown-item" href="{{ path_for('admin.signout') }}">Sign Out</a>
+          {% endif %}
+          </div>
+        </li>
+      {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path_for('auth.signup') }}">Sign Up</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path_for('auth.signin') }}">Sign In</a>
+        </li>
+      {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>

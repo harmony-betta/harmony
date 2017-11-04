@@ -1,0 +1,32 @@
+{% extends 'templates/app.twig' %}
+
+{% block content %}
+    
+    <div class="form-container">
+    <div class="card">
+        <h4 class="card-header">Admin Sign In</h4>
+            <div class="card-body">                
+
+                <form method="POST" action="{{ path_for('admin.signin') }}" autocomplete="off">
+                    {{ csrf.field | raw }}
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="text" class="form-control {{ errors.email ? 'is-invalid' : '' }}" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter email" value="{{ old.email }}">
+                        {% if errors.email %}
+                            <small id="emailHelp" class="form-text text-danger">*{{ errors.email | first }}</small>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control {{ errors.password ? 'is-invalid' : '' }}" name="password" id="password" placeholder="Password">
+                        {% if errors.password %}
+                            <small id="passwordHelp" class="form-text text-danger">*{{ errors.password | first }}</small>
+                        {% endif %}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sign In</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

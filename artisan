@@ -1,0 +1,41 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+use App\Support\Commands\GeneratorController;
+use App\Support\Commands\GeneratorModel;
+use App\Support\Commands\GeneratorMiddleware;
+use App\Support\Commands\StorageCommand;
+use App\Support\Commands\StorageLink;
+use App\Support\Commands\StorageUnLink;
+use Symfony\Component\Console\Application;
+use Phpmig\Console\Command;
+
+$app = new Application('Harmony Framework', '1.0.0');
+
+$phpmig_commands = [
+    new Command\CheckCommand(),
+    new Command\DownCommand(),
+    new Command\GenerateCommand(),
+    new Command\InitCommand(),
+    new Command\MigrateCommand(),
+    new Command\RedoCommand(),
+    new Command\RollbackCommand(),
+    new Command\StatusCommand(),
+    new Command\UpCommand(),
+];
+foreach ($phpmig_commands as $command) {
+    $command->setName('db:' . $command->getName());
+}
+
+$app->addCommands($phpmig_commands);
+
+$app->add(new GeneratorController());
+$app->add(new GeneratorModel());
+$app->add(new GeneratorMiddleware());
+$app->add(new StorageCommand());
+$app->add(new StorageLink());
+$app->add(new StorageUnLink());
+
+$app->run();

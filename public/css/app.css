@@ -1,0 +1,32 @@
+body {
+    padding-top: 80px;
+    padding-bottom: 40px;
+}
+
+a,
+button {
+    cursor: pointer;
+}
+
+.form-container {
+    width: 70%;
+    margin: auto;
+    padding: 10px;
+}
+
+.container-email {
+    width: 60%;
+    margin: auto;
+}
+
+.body-email {
+    text-indent: 20px;
+    width: 55%;
+    padding: 10px;
+    margin: auto;
+}
+
+.footer-email {
+    text-align: center;
+    font-size: 13px;
+}
