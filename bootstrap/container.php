@@ -51,14 +51,6 @@ $container['schema'] = function () {
     return Capsule::schema();
 };
 
-$container['auth'] = function($container){
-    return new \App\Support\Auth\Auth;
-};
-
-$container['admin'] = function($container){
-    return new \App\Support\Auth\AuthAdmin;
-};
-
 $container['flash'] = function($container){
     return new \Slim\Flash\Messages;
 };
@@ -74,6 +66,8 @@ $container['view'] = function($container) {
         $container->request->getUri()
     ));
 
+    require dirname(__DIR__) . '/app/Support/Helpers/bootstrap.php';
+
     return $view;
 };
 
@@ -87,34 +81,4 @@ $container['validator'] = function($container) {
 
 $container['csrf'] = function($container){
     return new \Slim\Csrf\Guard;
-};
-
-$container['HomeController'] = function($container){
-    return new \App\Controllers\HomeController($container);
-};
-
-$container['AdminController'] = function($container){
-    return new \App\Controllers\AdminController($container);
-};
-
-$container['AuthController'] = function($container){
-    return new \App\Controllers\Auth\AuthController($container);
-};
-
-$container['AuthAdminController'] = function($container){
-    return new \App\Controllers\AuthAdmin\AuthAdminController($container);
-};
-
-$container['AdminPasswordController'] = function($container){
-    return new \App\Controllers\AuthAdmin\AdminPasswordController($container);
-};
-
-/**
- * END DANGER ZONE !!!
- * 
- * Silahkan definisakn container buatan anda di bawah area ini.
- */
-
-$container['EmailController'] = function($container) {
-return new \App\Controllers\EmailController($container);
 };

@@ -6,9 +6,6 @@ require __DIR__ . '/vendor/autoload.php';
 use App\Support\Commands\GeneratorController;
 use App\Support\Commands\GeneratorModel;
 use App\Support\Commands\GeneratorMiddleware;
-use App\Support\Commands\StorageCommand;
-use App\Support\Commands\StorageLink;
-use App\Support\Commands\StorageUnLink;
 use Symfony\Component\Console\Application;
 use Phpmig\Console\Command;
 
@@ -34,8 +31,5 @@ $app->addCommands($phpmig_commands);
 $app->add(new GeneratorController());
 $app->add(new GeneratorModel());
 $app->add(new GeneratorMiddleware());
-$app->add(new StorageCommand());
-$app->add(new StorageLink());
-$app->add(new StorageUnLink());
 
 $app->run();

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Middleware;
-use App\Middleware\System;
+use App\Middleware\System\Middleware;
 
 class MiddlewareName extends Middleware
 {

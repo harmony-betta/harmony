@@ -69,7 +69,7 @@ class GeneratorMiddleware extends Command
                 }
                 make_path($MiddlewareName);
                 if (file_put_contents($MiddlewareName, $newFileContent, FILE_APPEND) !== false && file_put_contents(
-                    dirname(dirname(dirname(__DIR__)))."/bootstrap/middleware.php",
+                    dirname(dirname(dirname(__DIR__)))."/config/app.middleware.php",
                     "\$app->add(new \App\Middleware\\$pagename(\$container));\n",
                     FILE_APPEND
                 ) !== false) {

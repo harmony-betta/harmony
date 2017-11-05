@@ -20,7 +20,6 @@ use Respect\Validation\Validator as v;
 use Slim\App;
 
 session_start();
-$user_agent = $_SERVER['HTTP_USER_AGENT'];
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
@@ -55,6 +54,7 @@ $app = new App([
 ]);
 
 require_once dirname(__DIR__) . '/bootstrap/container.php';
+require_once dirname(__DIR__) . '/config/app.container.php';
 
 require_once dirname(__DIR__) . '/bootstrap/middleware.php';
 

@@ -18,5 +18,3 @@ $app->add(new \App\Middleware\System\UserAuthenticationMiddleware($container));
 $app->add(new \App\Middleware\System\AdminAuthenticationMiddleware($container));
 $app->add(new \App\Middleware\System\FlashMiddleware($container));
 $app->add(new \App\Middleware\System\HelperMiddleware($container));
-
-// Definikan middleware buatan anda sendiri dibawah ini
