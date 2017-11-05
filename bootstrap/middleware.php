@@ -14,7 +14,5 @@ if($container['settings']['debug'] === true){
 $app->add(new \App\Middleware\System\ValidationErrorsMiddleware($container));
 $app->add(new \App\Middleware\System\OldInputMiddleware($container));
 $app->add(new \App\Middleware\System\CsrfViewMiddleware($container));
-$app->add(new \App\Middleware\System\UserAuthenticationMiddleware($container));
-$app->add(new \App\Middleware\System\AdminAuthenticationMiddleware($container));
 $app->add(new \App\Middleware\System\FlashMiddleware($container));
 $app->add(new \App\Middleware\System\HelperMiddleware($container));

@@ -21,7 +21,7 @@ gulp.task('js', function() {
 gulp.task('serve', ['sass'], function() {
 
     browserSync.init({
-        proxy: "harmony-framework.dev"
+        proxy: "demo.harmony-framework.dev"
     });
 
     gulp.watch(['node_modules/bootstrap/scss/bootstrap.scss', 'resources/assets/scss/**/*.scss'], ['sass']);
