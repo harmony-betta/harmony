@@ -26,7 +26,13 @@ $capsule->bootEloquent();
 
 $container['notFoundHandler'] = function ($container) {
     return function ($request, $response) use ($container) {
-        return $container['view']->render($response, 'error/404.twig');
+        return $container['view']->render($response, 'error/404.twig', ['status' => 404, 'message' => 'The page you seek does not exist.']);
+    };
+};
+
+$container['notAllowedHandler'] = function ($c) {
+    return function ($request, $response, $methods) use ($c) {
+        return $container['view']->render($response, 'error/404.twig', ['status' => 405, 'message' => 'The page you seek does not allowed for you.']);
     };
 };
 
@@ -65,6 +71,7 @@ $container['view'] = function($container) {
         $container->router,
         $container->request->getUri()
     ));
+    $view->addExtension(new \App\Support\Views\DebugExtension);
 
     require dirname(__DIR__) . '/app/Support/Helpers/bootstrap.php';
 

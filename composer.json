@@ -28,5 +28,8 @@
     },
     "config": {
         "bin-dir": "bin/"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^3.4"
     }
 }
