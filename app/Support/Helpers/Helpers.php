@@ -22,5 +22,5 @@ $asset = new Twig_SimpleFunction('asset', function($data){
 });
 
 $public = new Twig_SimpleFunction('public', function($data){
-    return  '../assets/'.$data;
+    return  'assets/'.$data;
 });

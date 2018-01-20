@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 date_default_timezone_set('Asia/Jakarta');
 /** 
  * -----------------------------------------------------
@@ -22,7 +23,6 @@ use Symfony\Component\VarDumper\Dumper\CliDumper;
 use Symfony\Component\VarDumper\Dumper\HtmlDumper;
 use Symfony\Component\VarDumper\VarDumper;
 
-session_start();
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
