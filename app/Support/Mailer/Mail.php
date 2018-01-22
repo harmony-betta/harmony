@@ -17,12 +17,12 @@ class Mail
 
     public static function send($template, $data, $callback)
     {
-        $message = new Message($this->mailer);
+        $message = new Message(self::$mailer);
 
-        $message->body($this->view->fetch($template, $data));
+        $message->body(self::$view->fetch($template, $data));
 
         call_user_func($callback, $message);
 
-        $this->send_mailer->send($message);
+        self::$send_mailer->send($message);
     }
 }
