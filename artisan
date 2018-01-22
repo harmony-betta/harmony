@@ -6,10 +6,14 @@ require __DIR__ . '/vendor/autoload.php';
 use App\Support\Commands\GeneratorController;
 use App\Support\Commands\GeneratorModel;
 use App\Support\Commands\GeneratorMiddleware;
+use App\Support\Commands\GeneratorAuth;
+use App\Support\Commands\GeneratorPasswordController;
+use App\Support\Commands\RouteLists;
+use App\Support\Commands\GeneratorAuthScaffolding;
 use Symfony\Component\Console\Application;
 use Phpmig\Console\Command;
 
-$app = new Application('Harmony Framework', '1.0.0');
+$app = new Application('Harmony Framework | Created by Betta Dev Indonesia', 'v1.2');
 
 $phpmig_commands = [
     new Command\CheckCommand(),
@@ -31,5 +35,9 @@ $app->addCommands($phpmig_commands);
 $app->add(new GeneratorController());
 $app->add(new GeneratorModel());
 $app->add(new GeneratorMiddleware());
+$app->add(new GeneratorAuth());
+$app->add(new GeneratorPasswordController());
+$app->add(new GeneratorAuthScaffolding());
+$app->add(new RouteLists());
 
 $app->run();
