@@ -1,5 +1,13 @@
 # Change Log
 
+## [Unreleased](https://github.com/harmony-betta/harmony/tree/HEAD)
+
+[Full Changelog](https://github.com/harmony-betta/harmony/compare/0.2...HEAD)
+
+**Merged pull requests:**
+
+- Generate Auth Scaffolding Harmony [\#2](https://github.com/harmony-betta/harmony/pull/2) ([darkterminal](https://github.com/darkterminal))
+
 ## [0.2](https://github.com/harmony-betta/harmony/tree/0.2) (2018-01-17)
 [Full Changelog](https://github.com/harmony-betta/harmony/compare/0.1...0.2)
 
