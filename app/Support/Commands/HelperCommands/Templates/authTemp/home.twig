@@ -1,0 +1,119 @@
+{% extends 'includes/default.twig' %}
+
+{% block content %}
+
+<div class="staff-home-section container mt-5">
+
+    <div class="row">
+    	<div class="col-12 col-md-4">
+    		<div class="card bg-primary mb-3 text-white">
+    			<div class="card-body">
+    				<h4 class="card-title">Tulis Berita</h4>
+    				<p class="card-text">Sebagai kontributor anda bisa menulis berita sesuai dengan bagian anda.</p>
+    				<a href="{{ path_for('auth.buat-post') }}" class="btn btn-block btn btn-outline-light"><i class="fa fa-pencil"></i> Tulis</a>
+    			</div>
+    		</div>
+    	</div>
+    	<div class="col-12 col-md-4">
+    		<div class="card bg-success mb-3 text-white">
+    			<div class="card-body">
+    				<h4 class="card-title">Tulis Email</h4>
+    				<p class="card-text">Email yang anda tulis melalui sistem ini akan di forward ke email anda.</p>
+    				<a href="javascript:;" class="btn btn-block btn btn-outline-light" data-toggle="modal" data-target="#modelEmail"><i class="fa fa-send"></i> Tulis Email</a>
+    			</div>
+    		</div>
+    	</div>
+    	<div class="col-12 col-md-4">
+    		<div class="card bg-info mb-3 text-white">
+    			<div class="card-body">
+    				<h4 class="card-title">Buat Event</h4>
+    				<p class="card-text">Buatlah event yang mungkin relevan untuk bagian anda.</p>
+    				<a href="{{ path_for('auth.buatEvent') }}" class="btn btn-block btn btn-outline-light"><i class="fa fa-calendar"></i> Buat Event</a>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+
+    <div class="row mt-5">
+    	<div class="col-12 col-md-4">
+    		<h3 class="page-header"><i class="fa fa-book"></i> List Berita</h3>
+    		<div class="p-1" style="height: 350px;overflow-y: scroll;overflow-x:hidden">
+    			<ul class="list-group">
+    				{% for post in posts %}
+    				{% if post.author == auth.user.name or post.author == admin.admin.name %}
+    				<li class="list-group-item small">
+    					<a href="{{ path_for('auth.editPost', {'id' : post.id}) }}" class="d-inline-block">{{ post.title }}</a>
+    					<a href="{{ path_for('auth.deletePost', {'id': post.id}) }}" class="badge badge-danger badge-pill d-inline-block float-right"><i class="fa fa-trash"></i></a>
+    				</li>
+    				{% endif %}
+    				{% endfor %}
+    			</ul>
+    		</div>
+    	</div>
+    	<div class="col-12 col-md-4">
+    		<h3 class="page-header"><i class="fa fa-list-alt"></i> List Event</h3>
+    		<div class="p-1" style="height: 350px;overflow-y: scroll;overflow-x:hidden">
+	    		<ul class="list-group">
+	    			{% for schedule in schedules %}
+	    			<li class="list-group-item small"><a href="{{ path_for('auth.editEvent', {"slug" : schedule.slug}) }}" title="{{ schedule.title }}"><i class="fa fa-calendar"></i> {{schedule.title}}</a></li>
+	    			{% endfor %}
+	    		</ul>
+	    	</div>
+    	</div>
+    	<div class="col-12 col-md-4">
+    		<h3 class="page-header"><i class="fa fa-calendar"></i> Kalender</h3>
+    		<div class="p-3">
+    			<div id="calendarWidget"></div>
+    		</div>
+    	</div>
+    </div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="modelEmail" tabindex="-1" role="dialog" aria-labelledby="modelEmailLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="modelEmailLabel">Tulis Email</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <form id="FormSendEmail" autocomplete="off">
+	        	{{ csrf.field | raw }}
+	        	<div class="input-group input-group-sm mb-2">
+				  	<span class="input-group-addon" id="sizing-addon1">To</span>
+				  	<input type="email" name="to_user" id="to_user" class="form-control" placeholder="To" list="email" required>
+				  	<datalist id="email">
+				  		{% for user in users %}
+				  		<option value="{{ user.email }}">{{ user.email }}</option>
+				  		{% endfor %}
+				  	</datalist>
+				</div>
+				<div class="input-group input-group-sm mb-2">
+				  <span class="input-group-addon" id="sizing-addon2">Subject</span>
+				  <input type="text" name="subject" id="subject"  class="form-control" placeholder="Subject" required>
+				</div>
+				<div class="form-group">
+					<textarea name="body" id="frameEditor" class="form-control form-control-sm" style="resize:none;" required></textarea>
+				</div>
+				<input type="hidden" name="from_user" id="from_user" value="{{ auth.user.email }}">
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <button type="button" id="EmailSending" class="btn btn-primary">Send Email</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+</div>
+
+{% endblock %}
+
+{% block script %}
+    
+    {% include 'includes/javascript.twig' %}
+
+{% endblock %}

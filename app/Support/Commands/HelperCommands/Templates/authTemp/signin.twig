@@ -1,0 +1,40 @@
+{% extends 'includes/signin-template.twig' %}
+
+{% block content %}
+
+    <div class="page login-page">
+      <div class="container">
+        <div class="form-outer text-center d-flex align-items-center">
+          <div class="form-inner">
+            <div class="logo text-uppercase"><span>Login</span><strong class="text-primary">Contributor</strong></div>
+            <p>Halaman login untuk kontributor atau penulis berita di Sekolah Tinggi Agama Islam Bakti Negara Tegal</p>
+            <form method="POST" action="{{ path_for('auth.signin') }}" autocomplete="off">
+                {{ csrf.field | raw }}
+              <div class="form-group">
+                <label for="login-username" class="label-custom">Email Address</label>
+                <input id="login-username" class="{{ errors.email ? 'is-invalid' : '' }}" name="email" value="{{ old.email }}" type="text" required="" aria-describedby="emailHelp">
+                {% if errors.email %}
+                    <small id="emailHelp" class="form-text text-danger">*{{ errors.email | first }}</small>
+                {% endif %}
+              </div>
+              <div class="form-group">
+                <label for="login-password" class="label-custom">Password</label>
+                <input id="login-password" class="{{ errors.password ? 'is-invalid' : '' }}" type="password" name="password" required="">
+                {% if errors.password %}
+                    <small id="passwordHelp" class="form-text text-danger">*{{ errors.password | first }}</small>
+                {% endif %}
+              </div>
+              <button type="submit" class="btn btn-primary" id="login">Sign In</button>
+              <!-- This should be submit button but I replaced it with <a> for demo purposes-->
+            </form>
+            <a class="signup" href="javascript:void(0);" onclick="window.history.back();">Back to Homepage</a>
+          </div>
+          <div class="copyrights text-center">
+            <p>Design by <a href="https://bettadeveloperindonesia.github.io" class="external">Betta Dev Indonesia</a></p>
+            <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

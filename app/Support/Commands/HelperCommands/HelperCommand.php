@@ -4,6 +4,22 @@ namespace App\Support\Commands\HelperCommands;
 
 class HelperCommand
 {
+    public static function getFileAuth($filename, $auth_name)
+    {
+        $file = dirname(dirname(__FILE__)) .'/HelperCommands/Templates/Auth/' . $filename .'.php';
+
+        if(file_exists($file)){
+            $plaintext    = file_get_contents($file);
+            $t_explode    = explode('/', $auth_name);
+            $replace      = end($t_explode);
+            $search       = $filename;
+            $plaintext   = str_replace($search, $replace, $plaintext);
+            return $plaintext;
+        }else{
+            return 'File Does not exists!';
+        }
+    }
+
     public static function getFileController($filename, $controller_name)
     {
         $file = dirname(dirname(__FILE__)) .'/HelperCommands/Templates/Controllers/' . $filename .'.php';
