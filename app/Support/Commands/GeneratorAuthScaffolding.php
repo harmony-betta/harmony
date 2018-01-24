@@ -34,10 +34,43 @@ class GeneratorAuthScaffolding extends Command
 
         $dir = dirname(__FILE__).'/HelperCommands/Templates/authTemp';//"path/to/targetFiles";
         $dirNew = dirname(dirname(dirname(dirname(__FILE__)))).'/resources/views/auth';//path/to/destination/files
-        
-        $this->rcopy($dir , $dirNew);
 
-        $text = "Create Full Auth Scaffolding Successfully!";
+        // Insert new line in Middleware file
+        $pathNewContentForMiddleware        = dirname(dirname(dirname(__DIR__))).'/bootstrap/middleware.php';
+        $templateNewContentForMiddleware    = "\n\$app->add(new \App\Middleware\System\UserAuthenticationMiddleware(\$container));";
+
+        // Insert new line in app.container file
+        $pathNewContainer                   = dirname(dirname(dirname(__DIR__))).'/config/app.container.php';
+        $templatNewContainer                = HelperCommand::getFileNewContainer('newContainer');
+
+        // Insert use Middleware
+        $routerFile                         = dirname(dirname(dirname(__DIR__))).'/routes/web.php';
+
+        $file_contents                      = file_get_contents($routerFile);
+        $insertToRouter                     = "<?php\n\nuse App\Middleware\System\GuestMiddleware;\nuse App\Middleware\System\AuthMiddleware;\n";
+        $file_contents                      = str_replace("<?php", $insertToRouter, $file_contents);
+
+        $insertToRouterName                 = "})->setName('home');";
+        $file_routes                        = str_replace("});", $insertToRouterName, $file_contents);
+
+        // Insert template to router
+        $templatNewRoutes                   = HelperCommand::getFileNewRoutes('router');
+
+        // Replace default Menu in welcome page
+        $welcomeTemplate                    = dirname(dirname(dirname(__DIR__))).'/resources/views/welcome.twig';
+        $contentsFromTemplate               = file_get_contents($welcomeTemplate);
+        $newWelcomeTempalate                = HelperCommand::getFileNewWelcome('Welcome');
+
+        if( $this->rcopy($dir , $dirNew) === true){
+            file_put_contents($pathNewContentForMiddleware, $templateNewContentForMiddleware, FILE_APPEND);
+            file_put_contents($pathNewContainer, $templatNewContainer, FILE_APPEND);
+            file_put_contents($routerFile, $file_contents);
+            file_put_contents($routerFile, $file_routes);
+            file_put_contents($routerFile, $templatNewRoutes, FILE_APPEND);
+            file_put_contents($welcomeTemplate, $newWelcomeTempalate);
+
+            $text = "Create Full Auth Scaffolding Successfully! ";
+        }
 
         $style = new OutputFormatterStyle('green');
         $output->getFormatter()->setStyle('fire', $style);
@@ -68,5 +101,7 @@ class GeneratorAuthScaffolding extends Command
                     $this->rcopy ( "$src/$file", "$dst/$file" );
         } else if (file_exists ( $src ))
             copy ( $src, $dst );
+
+        return true;
     }
 }

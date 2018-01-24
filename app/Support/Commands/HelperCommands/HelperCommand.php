@@ -78,4 +78,44 @@ class HelperCommand
                     return 'File Does not exists!';
                 }
     }
+
+    public static function getFileNewContainer($filename)
+    {
+        $file = dirname(dirname(__FILE__)) .'/HelperCommands/Templates/Container/' . $filename .'.php';
+        
+                if(file_exists($file)){
+                    $plaintext    = file_get_contents($file);
+                    $search       = '<?php';
+                    $plaintext   = str_replace($search, '', $plaintext);
+                    return $plaintext;
+                }else{
+                    return 'File Does not exists!';
+                }
+    }
+
+    public static function getFileNewRoutes($filename)
+    {
+        $file = dirname(dirname(__FILE__)) .'/HelperCommands/Templates/Routes/' . $filename .'.php';
+        
+                if(file_exists($file)){
+                    $plaintext    = file_get_contents($file);
+                    $search       = '<?php';
+                    $plaintext   = str_replace($search, '', $plaintext);
+                    return $plaintext;
+                }else{
+                    return 'File Does not exists!';
+                }
+    }
+
+    public static function getFileNewWelcome($filename)
+    {
+        $file = dirname(dirname(__FILE__)) .'/HelperCommands/Templates/' . $filename .'.php';
+        
+                if(file_exists($file)){
+                    $plaintext    = file_get_contents($file);
+                    return $plaintext;
+                }else{
+                    return 'File Does not exists!';
+                }
+    }
 }

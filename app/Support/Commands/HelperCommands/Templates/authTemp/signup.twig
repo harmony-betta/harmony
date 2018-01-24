@@ -1,39 +1,66 @@
-{% extends 'templates/app.twig' %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-{% block content %}
-    
-    <div class="form-container">
-    <div class="card">
-        <h4 class="card-header">Sign Up</h4>
-            <div class="card-body">                
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-                <form method="POST" action="{{ path_for('auth.signup') }}" autocomplete="off">
-                    {{ csrf.field | raw }}
-                    <div class="form-group">
-                        <label for="email">Email address</label>
-                        <input type="text" class="form-control {{ errors.email ? 'is-invalid' : '' }}" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter email" value="{{ old.email }}">
-                        {% if errors.email %}
-                            <small id="emailHelp" class="form-text text-danger">*{{ errors.email | first }}</small>
-                        {% endif %}
-                    </div>
-                    <div class="form-group">
-                        <label for="name">Fullname</label>
-                        <input type="text" class="form-control {{ errors.name ? 'is-invalid' : '' }}" name="name" id="name" aria-describedby="fullnameHelp" placeholder="Enter Fullname" value="{{ old.name }}">
-                        {% if errors.name %}
-                            <small id="fullnameHelp" class="form-text text-danger">*{{ errors.name | first }}</small>
-                        {% endif %}
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control {{ errors.password ? 'is-invalid' : '' }}" name="password" id="password" placeholder="Password">
-                        {% if errors.password %}
-                            <small id="passwordHelp" class="form-text text-danger">*{{ errors.password | first }}</small>
-                        {% endif %}
-                    </div>
-                    <button type="submit" class="btn btn-primary">Sign Up</button>
-                </form>
-            </div>
+    <title>Harmony Sign Up Page</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="{{ path_for('home') }}">Harmony Framework</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ path_for('auth.signin') }}">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ path_for('auth.signup') }}">Register</a>
+            </li>
+          </ul>
         </div>
+      </div>
+    </nav>
+
+    <div style="height: 80vh;" class="d-flex align-items-center">
+      <div class="card mx-auto" style="width: 30em;">
+        <div class="card-header text-center">
+          Register Form
+        </div>
+        <div class="card-body">
+          <form action="{{ path_for('auth.signup') }}" method="POST">
+            {{ csrf.field | raw }}
+            <div class="form-group">
+              <label for="fullname">Fullname</label>
+              <input type="text" name="name" class="form-control form-control-sm" aria-describedby="emailHelp" placeholder="Enter fullname">
+            </div>
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input type="email" name="email" class="form-control form-control-sm" aria-describedby="emailHelp" placeholder="Enter email">
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" name="password" class="form-control form-control-sm" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+          </form>
+        </div>
+      </div>
     </div>
 
-{% endblock %}
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

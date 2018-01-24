@@ -65,9 +65,8 @@
                 </div>
 
                 <div class="links">
-                    <a href="https://harmony-betta.github.io" target="_blank">Documentations</a>
-                    <a href="https://github.com/harmony-betta/harmony/issues" target="_blank">Issues</a>
-                    <a href="https%3A%2F%2Fjoin.slack.com%2Ft%2Fharmonyframework%2Fshared_invite%2FenQtMzAxNjkxODg5NjY0LTk4ZTZhZjhkMmMwMGZjODQ4ZGYwYWU1ODlkZDljNDZjNjk4MTMyZWEyYWQ0OWRhNjAyNGRjNjNkMTgxY2JlNTU&h=ATM5TvFttvEP23nxOsYZ0Pzy5iSmsj4GvdhCjdnCdPw-PFVLZd06kuFI64fF4aNd8258zYSzsM9BfgFh7emrnxjWjDKM49Yp2zWFndSoee70ArxooTYVXBWTiXl8e2U86R5FZ44AANmT6PD9gTcLBWOaS7Fb9qZWpylTccFJNYuVQ4wKmlIGTAGepat0Cxv7Bjml63AZD2oKZVfwSEGc4sdDXO-0UyfI8nqb-Mtpmlh7u7r84MjQjLwNBC_Lyb1pDPgx7eOf-jRV3pgJTQ3TMwnn6bWg4DjN" target="_blank">Slack Forum</a>
+                    <a href="{{ path_for('auth.signin') }}">Login</a>
+                    <a href="{{ path_for('auth.signup') }}">Register</a>
                 </div>
             </div>
         </div>

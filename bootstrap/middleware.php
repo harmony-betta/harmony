@@ -16,4 +16,3 @@ $app->add(new \App\Middleware\System\OldInputMiddleware($container));
 $app->add(new \App\Middleware\System\CsrfViewMiddleware($container));
 $app->add(new \App\Middleware\System\FlashMiddleware($container));
 $app->add(new \App\Middleware\System\HelperMiddleware($container));
-$app->add(new \App\Middleware\System\UserAuthenticationMiddleware($container));
