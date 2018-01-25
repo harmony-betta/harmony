@@ -17,7 +17,7 @@ class Tinker extends Command
     protected function configure()
     {
         $this->setName('tinker')
-            ->setDescription('Outputs all routes in your application');
+            ->setDescription('Interact with your application');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

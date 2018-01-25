@@ -73,4 +73,6 @@ return [
             return $obj->getAttributes();
         }
     ],
+    'prompt' => '>>> ',
+    'requireSemicolons' => true,
 ];
