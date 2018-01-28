@@ -2,7 +2,7 @@
     "name": "harmony-betta/harmony",
     "description": "The Harmony Framework.",
     "keywords": ["framework", "harmony"],
-    "license": "Apache License",
+    "license": "GPLv3",
     "type": "project",
     "require": {
         "php": "^5.5.9|>=7.0.8",
