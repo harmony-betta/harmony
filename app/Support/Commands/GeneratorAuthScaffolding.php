@@ -35,6 +35,12 @@ class GeneratorAuthScaffolding extends Command
         $dir = dirname(__FILE__).'/HelperCommands/Templates/authTemp';//"path/to/targetFiles";
         $dirNew = dirname(dirname(dirname(dirname(__FILE__)))).'/resources/views/auth';//path/to/destination/files
 
+        $dirEmail = dirname(__FILE__).'/HelperCommands/Templates/email';//"path/to/targetFiles";
+        $dirNewEmail = dirname(dirname(dirname(dirname(__FILE__)))).'/resources/views/email';//path/to/destination/files
+
+        $dirPartials = dirname(__FILE__).'/HelperCommands/Templates/partials';//"path/to/targetFiles";
+        $dirNewPartials = dirname(dirname(dirname(dirname(__FILE__)))).'/resources/views/partials';//path/to/destination/files
+
         // Insert new line in Middleware file
         $pathNewContentForMiddleware        = dirname(dirname(dirname(__DIR__))).'/bootstrap/middleware.php';
         $templateNewContentForMiddleware    = "\n\$app->add(new \App\Middleware\System\UserAuthenticationMiddleware(\$container));";
@@ -61,13 +67,49 @@ class GeneratorAuthScaffolding extends Command
         $contentsFromTemplate               = file_get_contents($welcomeTemplate);
         $newWelcomeTempalate                = HelperCommand::getFileNewWelcome('Welcome');
 
-        if( $this->rcopy($dir , $dirNew) === true){
+        // Change Migrations
+        $dirOfMigration                     = glob(dirname(dirname(dirname(__DIR__))).'/app/Database/migrations/*_Users.php');
+        $migrationContent                   = '';
+        if (is_array($dirOfMigration) && !empty($dirOfMigration)) {
+            foreach($dirOfMigration as $file) 
+            {
+                $migrationContent = $file;
+            }
+        }
+        $dirMigrationFile                   = $migrationContent;
+        $contentFormMigration               = file_get_contents($migrationContent);
+        $newTemplateForMigration            = HelperCommand::getFileMigration('userMigrations');
+
+        // Change Models
+        $dirModelExist                      = dirname(dirname(dirname(__DIR__))).'/app/Models/Users.php';
+        $contentFormModelsExists            = file_get_contents($dirModelExist);
+        $newTemplateForModels               = HelperCommand::getFileNewModels('AuthModel');
+
+        if( $this->rcopy($dir , $dirNew) === true && $this->rcopy($dirEmail , $dirNewEmail) === true && $this->rcopy($dirPartials , $dirNewPartials) === true ){
+            // Append Middleware
             file_put_contents($pathNewContentForMiddleware, $templateNewContentForMiddleware, FILE_APPEND);
+            // Append Container
             file_put_contents($pathNewContainer, $templatNewContainer, FILE_APPEND);
+            // Use Class of Middleware on Route
             file_put_contents($routerFile, $file_contents);
+            // Create Route name
             file_put_contents($routerFile, $file_routes);
+            // Append new Route Schema for Auth
             file_put_contents($routerFile, $templatNewRoutes, FILE_APPEND);
+            // Replace default Welcome Pagae using Auth
             file_put_contents($welcomeTemplate, $newWelcomeTempalate);
+            // Replace default UserMigrations
+            file_put_contents($dirMigrationFile, $newTemplateForMigration);
+            // Replace default Model Users
+            file_put_contents($dirModelExist, $newTemplateForModels);
+
+            $process = new Process('php artisan db:migrate');
+            $process->run();
+
+            // executes after the command finishes
+            if (!$process->isSuccessful()) {
+                throw new ProcessFailedException($process);
+            }
 
             $text = "Create Full Auth Scaffolding Successfully! ";
         }

@@ -25,5 +25,4 @@ Now you can install using Harmony Installer
 
 	harmony new harmony-project
 
-***define the name of your project at the end of the command like ** `harmony new your-project-name`
-
+***define the name of your project at the end of the command like ** `harmony new your-project-name

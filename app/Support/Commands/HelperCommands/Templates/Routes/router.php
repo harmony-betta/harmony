@@ -1,33 +1,50 @@
 <?php
 
-$app->group('', function(){
+/**
+ * Auth Group First Block
+ *
+ * 
+ * This is route only avalible for Guest to :
+ * - Login
+ * - SignUp
+ * - Forgot Password -> Reset Password
+ *
+ * ==== Using GuestMiddleware to Protect Route ====
+ */
+$app->group('/auth', function(){
 
-		/** 
-		* Insert your logic route in here
-		* $this->get('/name/route', 'YourController:method');
-		*/
-		$this->get('/auth/signin', 'AuthController:getSignIn')->setName('auth.signin');
-    $this->post('/auth/signin', 'AuthController:postSignIn');
+	$this->get('/signin', 'AuthController:getSignIn')->setName('auth.signin');
+	$this->post('/signin', 'AuthController:postSignIn');
 
-    $this->get('/auth/signup', 'AuthController:getSignUp')->setName('auth.signup');
-    $this->post('/auth/signup', 'AuthController:postSignUp');
+	$this->get('/signup', 'AuthController:getSignUp')->setName('auth.signup');
+	$this->post('/signup', 'AuthController:postSignUp');
 
-    $this->get('/auth/confirm', 'AuthController:userVerification')->setName('auth.confirm');
+	$this->get('/forgot-password', 'PasswordController:forgotPassword')->setName('auth.forgot.password');
+	$this->post('/forgot-password', 'PasswordController:postForgotPassword');
+
+	$this->get('/reset-password', 'PasswordController:resetPassword')->setName('auth.reset.password');
+	$this->post('/reset-password', 'PasswordController:postResetPassword');
 
 })->add(new GuestMiddleware($container));
-    
-$app->group('', function() {
-		
-		/** 
-		* Insert your logic route in here
-		* $this->get('/name/route', 'YourController:method');
-		*/
 
-		$this->get('/auth/password/change', 'PasswordController:getChangePassword')->setName('auth.password.change');
-    $this->post('/auth/password/change', 'PasswordController:postChangePassword');
+/**
+ * Auth Group Second Block
+ *
+ * 
+ * This is route only avalible for User is Authenticated to :
+ * - After Login [display] Home Page / Dashboard
+ * - Change Password
+ * - Sign Out also
+ *
+ * ==== Using AuthMiddleware to Protect Route ====
+ */
+$app->group('/auth', function() {
 
-    $this->get('/auth/home', 'AuthController:index')->setName('auth.home');
-    
-    $this->get('/auth/signout', 'AuthController:getSignOut')->setName('auth.signout');
+	$this->get('/password/change', 'PasswordController:getChangePassword')->setName('auth.password.change');
+	$this->post('/password/change', 'PasswordController:postChangePassword');
+
+	$this->get('/home', 'AuthController:index')->setName('auth.home');
+
+	$this->get('/signout', 'AuthController:getSignOut')->setName('auth.signout');
 
 })->add(new AuthMiddleware($container));

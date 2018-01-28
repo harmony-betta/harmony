@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <title>Harmony Sign Up Page</title>
+    <link rel="stylesheet" href="{{ base_url() }}/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="{{ base_url() }}/assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="{{ base_url() }}/assets/css/app.css">
+    <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
+    <title>Homepage Authentication</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -40,16 +42,30 @@
             {{ csrf.field | raw }}
             <div class="form-group">
               <label for="fullname">Fullname</label>
-              <input type="text" name="name" class="form-control form-control-sm" aria-describedby="emailHelp" placeholder="Enter fullname">
+              <input type="text" name="name" class="form-control form-control-sm {{ errors.name ? 'is-invalid' : '' }}" placeholder="Enter fullname">
+              {% if errors.name %}
+              <div class="invalid-feedback">
+                {{ errors.name | first }}
+              </div>
+              {% endif %}
             </div>
             <div class="form-group">
               <label for="email">Email address</label>
-              <input type="email" name="email" class="form-control form-control-sm" aria-describedby="emailHelp" placeholder="Enter email">
-              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              <input type="email" name="email" class="form-control form-control-sm {{ errors.email ? 'is-invalid' : '' }}" placeholder="Enter email">
+              {% if errors.email %}
+              <div class="invalid-feedback">
+                {{ errors.email | first }}
+              </div>
+              {% endif %}
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" name="password" class="form-control form-control-sm" placeholder="Password">
+              <input type="password" name="password" class="form-control form-control-sm {{ errors.password ? 'is-invalid' : '' }}" placeholder="Password">
+              {% if errors.password %}
+              <div class="invalid-feedback">
+                {{ errors.password | first }}
+              </div>
+              {% endif %}
             </div>
             <button type="submit" class="btn btn-primary btn-block">Register</button>
           </form>
@@ -59,8 +75,8 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="{{ base_url() }}/assets/js/jquery.min.js"></script>
+    <script src="{{ base_url() }}/assets/js/popper.min.js"></script>
+    <script src="{{ base_url() }}/assets/js/bootstrap.min.js"></script>
   </body>
 </html>

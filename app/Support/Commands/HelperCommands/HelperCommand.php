@@ -118,4 +118,28 @@ class HelperCommand
                     return 'File Does not exists!';
                 }
     }
+
+    public static function getFileMigration($filename)
+    {
+        $file = dirname(dirname(__FILE__)) .'/HelperCommands/Templates/Migrations/' . $filename .'.php';
+        
+                if(file_exists($file)){
+                    $plaintext    = file_get_contents($file);
+                    return $plaintext;
+                }else{
+                    return 'File Does not exists!';
+                }
+    }
+
+    public static function getFileNewModels($filename)
+    {
+        $file = dirname(dirname(__FILE__)) .'/HelperCommands/Templates/Models/' . $filename .'.php';
+        
+                if(file_exists($file)){
+                    $plaintext    = file_get_contents($file);
+                    return $plaintext;
+                }else{
+                    return 'File Does not exists!';
+                }
+    }
 }
