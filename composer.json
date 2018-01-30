@@ -2,8 +2,17 @@
     "name": "harmony-betta/harmony",
     "description": "The Harmony Framework.",
     "keywords": ["framework", "harmony"],
-    "license": "GPLv3",
+    "license": "GPL-3.0-only",
     "type": "project",
+    "version": "1.0.3",
+    "authors": [
+        {
+            "name": "Imam Ali Mustofa",
+            "email": "bettadevindonesia@gmail.com",
+            "homepage": "https://harmony-betta.github.io",
+            "role": "Developer"
+        }
+    ],
     "require": {
         "php": "^5.5.9|>=7.0.8",
         "slim/slim": "3.3.0",
