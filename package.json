@@ -31,6 +31,11 @@
     "devDependencies": {
         "browser-sync": "^2.18.13",
         "gulp": "^3.9.1",
-        "gulp-sass": "^3.1.0"
+        "gulp-sass": "^3.1.0",
+        "del": "^2.0.2",
+        "gulp-autoprefixer": "latest",
+        "gulp-csso": "^2.0.0",
+        "gulp-uglify": "^2.0.0",
+        "run-sequence": "^1.2.2"
     }
 }
