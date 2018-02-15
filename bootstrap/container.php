@@ -87,5 +87,17 @@ $container['validator'] = function($container) {
 };
 
 $container['csrf'] = function($container){
-    return new \Slim\Csrf\Guard;
+    $guard = new Slim\Csrf\Guard();
+    $guard->setFailureCallable(function ($request, $response, $next) {
+        return $response->write(<<<EOT
+<!DOCTYPE html>
+<html>
+<head><title>CSRF Failed</title></head>
+<body>
+    <h1>Error</h1>
+    <p>An error occurred with your form submission. Please start again.</p>
+</body>
+</html>
+EOT);
+    });
 };
