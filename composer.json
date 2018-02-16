@@ -44,9 +44,9 @@
     },
     "scripts": {
         "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
-            "@php rmdir('harmony-master')"
-        ]
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "removeMaster": "rm -rf harmony-master"
     },
     "require-dev": {
         "symfony/var-dumper": "^3.4",
