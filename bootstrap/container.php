@@ -88,8 +88,5 @@ $container['validator'] = function($container) {
 
 $container['csrf'] = function($container){
     $guard = new Slim\Csrf\Guard();
-    $guard->setFailureCallable(function ($request, $response, $next) {
-        return $response->write(file_get_contents('../resources/views/error/csrf.twig'));
-    });
     return $guard;
 };
