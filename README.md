@@ -1,6 +1,10 @@
 
 ![Harmony Framework](https://image.ibb.co/eEhZdb/harmony_tinker.png "Harmony Framework")
 
+[![Latest Stable Version](https://poser.pugx.org/harmony-betta/harmony/v/stable)](https://packagist.org/packages/harmony-betta/harmony) 
+[![Total Downloads](https://poser.pugx.org/harmony-betta/harmony/downloads)](https://packagist.org/packages/harmony-betta/harmony)
+[![License](https://poser.pugx.org/harmony-betta/harmony/license)](https://packagist.org/packages/harmony-betta/harmony)
+
 ### Harmony Framework By Betta Dev Indonesia
 Built with Slim Framework - Harmony Framework allows you to use Eloquent ORM, and Interact with your application via Harmony Tinker!
 
