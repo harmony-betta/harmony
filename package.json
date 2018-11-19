@@ -23,7 +23,7 @@
     "author": "Betta Dev Indonesia <bettadevindonesia@gmail.com> (https://github.com/bettaeducation)",
     "license": "MIT",
     "dependencies": {
-        "bootstrap": "4.0.0-beta",
+        "bootstrap": ">=4.1.2",
         "font-awesome": "^4.7.0",
         "jquery": "^3.2.1",
         "popper.js": "^1.11.1"
