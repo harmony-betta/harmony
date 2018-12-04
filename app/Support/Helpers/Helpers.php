@@ -17,10 +17,19 @@ $date = new Twig_SimpleFunction('date', function($string=null){
     return ($string == '') ? date('d-M-Y') : date($string);
 });
 
-$asset = new Twig_SimpleFunction('asset', function($data){
-    return  '../storage/public/'.$data;
+$app_name = new Twig_SimpleFunction('app_name', function(){
+    return  env('APP_NAME');
 });
 
 $public = new Twig_SimpleFunction('public', function($data){
-    return  'assets/'.$data;
+	if (env('APP_HOST') === 'http://localhost:8081') {
+		$assets = sprintf(
+		    "%s://%s",
+		    isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
+		    $_SERVER['SERVER_NAME'] . '/assets/'.$data
+		);
+	} else {
+		$assets = rtrim(env('APP_HOST'), '/') . '/assets/'.$data;
+	}
+	return $assets;
 });
