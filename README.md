@@ -32,14 +32,8 @@ define the name of your project at the end of the command like `harmony new your
 
 #### Free Guide Harmony Framework
 
- - Facebook Note Series
-	 - [Introduction Harmony Framework PHP](https://www.facebook.com/notes/imam-ali-mustofa/intro-harmony-framework-php/2140688839497783/)
-	 - [Harmony Framework Tutorial Series - Eps 01 - Preparation](https://www.facebook.com/notes/imam-ali-mustofa/harmony-framework-tutorial-series-eps-01-preparation/2141577692742231/)
-	 - [Harmony Framework Tutorial Series - Eps 02 - Installation](https://www.facebook.com/notes/imam-ali-mustofa/harmony-framework-tutorial-series-eps-02-installation/2141952982704702/)
-	 - And others (Coming Soon).
-- Youtube Tutorial Series
-	- [Trailer Harmony Framework Tutorial Series](https://www.youtube.com/watch?v=SMWg2E8ggZ0&t=4s&list=PLo9cRxgHwysgVx4roYVMAPGm3v2d7K5Cq&index=1)
-	- [Introduction Harmony Framework PHP](https://www.youtube.com/watch?v=fbrqK4p9aOo&t=0s&list=PLo9cRxgHwysgVx4roYVMAPGm3v2d7K5Cq&index=2)
-	- [Harmony Framework Tutorial Series - Eps 01 - Preparation](https://www.youtube.com/watch?v=FIJBTIV1DW0&t=28s&list=PLo9cRxgHwysgVx4roYVMAPGm3v2d7K5Cq&index=3)
-	- [Harmony Framework Tutorial Series - Eps 02 - Installation](https://www.youtube.com/watch?v=EyWvtGYF_kQ&t=0s&list=PLo9cRxgHwysgVx4roYVMAPGm3v2d7K5Cq&index=4)
-	- And others (Coming Soon).
+ - Hamrony Documentations
+ 	- [Harmony Docs (English)](https://harmony-betta.github.io)
+ 	- [Harmony Docs (Indonesian)](http://www.harmony.bettadevindonesia.com)
+ - Forum Support
+ 	- [Harmony Forums](http://www.forum.bettadevindonesia.com)
