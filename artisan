@@ -18,7 +18,7 @@ use App\Support\Commands\GeneratorAuthScaffolding;
 use Symfony\Component\Console\Application;
 use Phpmig\Console\Command;
 
-$app = new Application('Harmony Framework | Created by Betta Dev Indonesia', 'v1.2');
+$app = new Application('Harmony Framework | Created by Betta Dev Indonesia', 'v1.3');
 
 $phpmig_commands = [
     new Command\CheckCommand(),

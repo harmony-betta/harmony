@@ -4,12 +4,14 @@
     "keywords": ["framework", "harmony"],
     "license": "GPL-3.0-only",
     "type": "project",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "authors": [
         {
             "name": "Imam Ali Mustofa",
             "email": "bettadevindonesia@gmail.com",
             "homepage": "https://harmony-betta.github.io",
+            "website": "http://www.harmony.bettadevindonesia.com",
+            "forums": "http://www.forum.bettadevindonesia.com",
             "role": "Developer"
         }
     ],
