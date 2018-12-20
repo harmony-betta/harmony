@@ -1,10 +1,24 @@
 {
     "name": "harmony-betta/harmony",
     "description": "The Harmony Framework.",
-    "keywords": ["framework", "harmony"],
+    "keywords": ["framework", "harmony", "harmony framewrok"],
     "license": "GPL-3.0-only",
     "type": "project",
     "version": "1.0.4",
+    "authors": [
+        {
+            "name": "Imam Ali Mustofa",
+            "email": "bettadevindonesia@gmail.com",
+            "homepage": "http://www.bettadevindonesia.com",
+            "role": "Founder & Developer Betta Dev Indonesia"
+        }
+    ],
+    "support": {
+        "email": "bettadevindonesia@gmail.com",
+        "issues": "https://github.com/harmony-betta/harmony/issues",
+        "forum": "http://www.forum.bettadevindonesia.com",
+        "wiki": "http://www.harmony.bettadevindonesia.com",
+    },
     "require": {
         "php": "^5.5.9|>=7.0.8",
         "slim/slim": "3.3.0",
