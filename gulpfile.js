@@ -37,13 +37,13 @@ gulp.task('js', function() {
 });
 
 // Watch Sass & Serve
-gulp.task('serve', ['sass'], function() {
+gulp.task('serve', function() {
 
     browserSync.init({
-        proxy: "http://harmony-framework.local"
+        proxy: "http://localhost/antaraja/public/"
     });
 
-    gulp.watch(['node_modules/bootstrap/scss/bootstrap.scss', 'resources/assets/scss/**/*.scss'], ['sass']);
+    gulp.watch(['node_modules/bootstrap/scss/bootstrap.scss', 'resources/assets/scss/**/*.scss'], gulp.series('sass'));
     gulp.watch("public/*.php").on('change', browserSync.reload);
     gulp.watch("resources/views/**/*.twig").on('change', browserSync.reload);
 });
@@ -60,4 +60,4 @@ gulp.task('fa', function() {
         .pipe(gulp.dest('public/assets/css'))
 });
 
-gulp.task('default', ['js', 'serve', 'fa', 'fonts']);
+gulp.task('default', gulp.parallel('js', 'serve', 'fa', 'fonts'));
