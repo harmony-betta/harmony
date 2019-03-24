@@ -19,6 +19,7 @@
         "slim/twig-view": "2.1.1",
         "illuminate/database": "^5.5",
         "illuminate/events": "^5.5",
+        "illuminate/support": "5.7.*",
         "respect/validation": "^1.1",
         "slim/csrf": "^0.8.2",
         "slim/flash": "^0.4.0",
