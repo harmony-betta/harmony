@@ -1,15 +1,25 @@
 {
     "name": "harmony-betta/harmony",
     "description": "The Harmony Framework.",
-    "keywords": ["framework", "harmony"],
-    "license": "MIT",
+    "keywords": ["framework", "harmony", "harmony framewrok"],
+    "license": "GPL-3.0-only",
     "type": "project",
+    "version": "1.0.4",
+    "authors": [
+        {
+            "name": "Imam Ali Mustofa",
+            "email": "bettadevindonesia@gmail.com",
+            "homepage": "http://www.bettadevindonesia.com",
+            "role": "Founder & Developer Betta Dev Indonesia"
+        }
+    ],
     "require": {
         "php": "^5.5.9|>=7.0.8",
         "slim/slim": "3.3.0",
         "slim/twig-view": "2.1.1",
         "illuminate/database": "^5.5",
         "illuminate/events": "^5.5",
+        "illuminate/support": "5.7.*",
         "respect/validation": "^1.1",
         "slim/csrf": "^0.8.2",
         "slim/flash": "^0.4.0",
@@ -36,7 +46,8 @@
     "scripts": {
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ]
+        ],
+        "removeMaster": "rm -rf harmony-master"
     },
     "require-dev": {
         "symfony/var-dumper": "^3.4",

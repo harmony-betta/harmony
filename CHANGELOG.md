@@ -1,5 +1,13 @@
 # Change Log
 
+## [Unreleased](https://github.com/harmony-betta/harmony/tree/HEAD)
+
+[Full Changelog](https://github.com/harmony-betta/harmony/compare/0.3...HEAD)
+
+**Merged pull requests:**
+
+- Add New Feature Authentication Generator [\#3](https://github.com/harmony-betta/harmony/pull/3) ([darkterminal](https://github.com/darkterminal))
+
 ## [0.3](https://github.com/harmony-betta/harmony/tree/0.3) (2018-01-24)
 [Full Changelog](https://github.com/harmony-betta/harmony/compare/0.2...0.3)
 

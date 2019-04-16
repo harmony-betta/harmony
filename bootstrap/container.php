@@ -87,5 +87,6 @@ $container['validator'] = function($container) {
 };
 
 $container['csrf'] = function($container){
-    return new \Slim\Csrf\Guard;
+    $guard = new Slim\Csrf\Guard();
+    return $guard;
 };
