@@ -6,17 +6,21 @@ require 'vendor/autoload.php';
 $dotenv = new Dotenv\Dotenv(__DIR__);
 $dotenv->load();
 
-use App\Support\Commands\GeneratorController;
-use App\Support\Commands\GeneratorModel;
-use App\Support\Commands\GeneratorMiddleware;
 use App\Support\Commands\GeneratorAuth;
-use App\Support\Commands\GeneratorPasswordController;
-use App\Support\Commands\RouteLists;
-use App\Support\Commands\Tinker;
-use App\Support\Commands\Serve;
 use App\Support\Commands\GeneratorAuthScaffolding;
-use Symfony\Component\Console\Application;
+use App\Support\Commands\GeneratorController;
+use App\Support\Commands\GeneratorMiddleware;
+use App\Support\Commands\GeneratorModel;
+use App\Support\Commands\GeneratorPasswordController;
+use App\Support\Commands\GeneratorSeeders;
+use App\Support\Commands\Migrate;
+use App\Support\Commands\RouteLists;
+use App\Support\Commands\Seeders;
+use App\Support\Commands\SeedersTruncate;
+use App\Support\Commands\Serve;
+use App\Support\Commands\Tinker;
 use Phpmig\Console\Command;
+use Symfony\Component\Console\Application;
 
 $app = new Application('Harmony Framework | Created by Betta Dev Indonesia', 'v1.3');
 
@@ -46,5 +50,9 @@ $app->add(new GeneratorAuthScaffolding());
 $app->add(new RouteLists());
 $app->add(new Tinker());
 $app->add(new Serve());
+$app->add(new Migrate());
+$app->add(new Seeders());
+$app->add(new SeedersTruncate());
+$app->add(new GeneratorSeeders());
 
 $app->run();
