@@ -34,6 +34,6 @@ define the name of your project at the end of the command like `harmony new your
 
  - Hamrony Documentations
  	- [Harmony Docs (English)](https://harmony-betta.github.io)
- 	- [Harmony Docs (Indonesian)](http://www.harmony.bettadevindonesia.com)
+ 	- [Harmony Docs (Indonesian)](http://haromony-framework.epizy.com/)
  - Forum Support
- 	- [Harmony Forums](http://www.forum.bettadevindonesia.com)
+ 	- [Harmony Forums](http://harmony.mydiscussion.net/)
