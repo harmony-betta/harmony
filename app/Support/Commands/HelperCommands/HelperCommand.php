@@ -142,4 +142,19 @@ class HelperCommand
                     return 'File Does not exists!';
                 }
     }
+
+    public static function getFileSeeders($filename)
+    {
+        $file = dirname(dirname(__FILE__)) .'/HelperCommands/Templates/Seeders/' . $filename .'.php';
+        
+        if(file_exists($file)){
+            $plaintext    = file_get_contents($file);
+            $replace      = $filename;
+            $search       = 'SeedersTemplate';
+            $plaintext   = str_replace($search, $replace, $plaintext);
+            return $plaintext;
+        }else{
+            return 'File Does not exists!';
+        }
+    }
 }
