@@ -1,12 +1,11 @@
-
-![Harmony Framework](https://image.ibb.co/eEhZdb/harmony_tinker.png "Harmony Framework")
+![Imgur](https://i.imgur.com/Evo8xta.png "Harmony Modern Slim Boilerplate")
 
 [![Latest Stable Version](https://poser.pugx.org/harmony-betta/harmony/v/stable)](https://packagist.org/packages/harmony-betta/harmony) 
 [![Total Downloads](https://poser.pugx.org/harmony-betta/harmony/downloads)](https://packagist.org/packages/harmony-betta/harmony)
 [![License](https://poser.pugx.org/harmony-betta/harmony/license)](https://packagist.org/packages/harmony-betta/harmony)
 
-### Harmony Framework By Betta Dev Indonesia
-Built with Slim Framework - Harmony Framework allows you to use Eloquent ORM, and Interact with your application via Harmony Tinker!
+### Harmony Modern Slim Boilerplate By Betta Dev Indonesia
+Built with Slim Framework - Harmony allows you to use Eloquent ORM, and Interact with your application via Harmony Tinker!
 
 ### Get Started
 
@@ -30,10 +29,7 @@ Now you can install using Harmony Installer
 
 define the name of your project at the end of the command like `harmony new your-project-name`
 
-#### Free Guide Harmony Framework
+#### Free Guide Harmony Modern Slim Boilerplate
 
  - Hamrony Documentations
- 	- [Harmony Docs (English)](https://harmony-betta.github.io)
- 	- [Harmony Docs (Indonesian)](http://haromony-framework.epizy.com/)
- - Forum Support
- 	- [Harmony Forums](http://harmony.mydiscussion.net/)
+ 	- [Harmony Docs (English)](https://bettadevindonesia.github.io/harmony-docs)
