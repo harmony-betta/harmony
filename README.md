@@ -1,9 +1,5 @@
 ![Imgur](https://i.imgur.com/Evo8xta.png "Harmony Modern Slim Boilerplate")
 
-[![Latest Stable Version](https://poser.pugx.org/harmony-betta/harmony/v/stable)](https://packagist.org/packages/harmony-betta/harmony) 
-[![Total Downloads](https://poser.pugx.org/harmony-betta/harmony/downloads)](https://packagist.org/packages/harmony-betta/harmony)
-[![License](https://poser.pugx.org/harmony-betta/harmony/license)](https://packagist.org/packages/harmony-betta/harmony)
-
 ### Harmony Modern Slim Boilerplate By Betta Dev Indonesia
 Built with Slim Framework - Harmony allows you to use Eloquent ORM, and Interact with your application via Harmony Tinker!
 
