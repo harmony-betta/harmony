@@ -7,7 +7,9 @@
         "test": "tests"
     },
     "scripts": {
-        "gulp": "gulp"
+        "dev": "concurrently \"npm run serve-php\" \"npm run serve-tailwind\"",
+        "serve-php": "cross-env PHP_SERVER=true php -S localhost:8081 -t public",
+        "serve-tailwind": "npx tailwindcss -o public/assets/css/styles.css --minify --watch"
     },
     "keywords": [
         "PHP",
@@ -20,22 +22,15 @@
         "Dev",
         "Indonesia"
     ],
-    "author": "Betta Dev Indonesia <bettadevindonesia@gmail.com> (https://github.com/bettaeducation)",
+    "author": "Imam Ali Mustofa <darkterminal@duck.com> (https://github.com/darkterminal)",
     "license": "MIT",
-    "dependencies": {
-        "bootstrap": ">=4.1.2",
-        "font-awesome": "^4.7.0",
-        "jquery": "^3.2.1",
-        "popper.js": "^1.11.1"
-    },
     "devDependencies": {
-        "browser-sync": "^2.18.13",
-        "gulp": "^4.0.0",
-        "gulp-sass": "^3.1.0",
-        "del": "^2.0.2",
-        "gulp-autoprefixer": "latest",
-        "gulp-csso": "^2.0.0",
-        "gulp-uglify": "^2.0.0",
-        "run-sequence": "^1.2.2"
+        "concurrently": "^8.2.1",
+        "cross-env": "^7.0.3"
+    },
+    "dependencies": {
+        "autoprefixer": "^10.4.15",
+        "postcss": "^8.4.28",
+        "tailwindcss": "^3.3.3"
     }
 }
