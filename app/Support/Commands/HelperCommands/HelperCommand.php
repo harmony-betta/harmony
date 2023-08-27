@@ -36,7 +36,7 @@ class HelperCommand
         }
     }
 
-    public function getFileModel($filename, $model_name)
+    public static function getFileModel($filename, $model_name)
     {
         $file = dirname(dirname(__FILE__)) .'/HelperCommands/Templates/Models/' . $filename .'.php';
 

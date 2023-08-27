@@ -1,76 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends "layouts/default.twig" %}
 
-        <title>Harmony</title>
+{% block title %}Welcome
+{% endblock %}
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #7FAAF0;
-                color: #fff;
-                font-family: 'Julius Sans One', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-            .full-height {
-                height: 100vh;
-            }
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-            .position-ref {
-                position: relative;
-            }
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-            .content {
-                text-align: center;
-            }
-            .title {
-                font-size: 84px;
-            }
-            .links > a {
-                color: #fff;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        
-        <div class="flex-center position-ref full-height">
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Harmony Framework
-                </div>
-
-                <div class="links">
-                    <a href="https://harmony-betta.github.io" target="_blank">Documentations</a>
-                    <a href="https://github.com/harmony-betta/harmony/issues" target="_blank">Issues</a>
-                </div>
-            </div>
-        </div> 
-
-    </body>
-</html>
+{% block content %}
+	<div class="h-screen bg-gradient-to-r from-blue-100 via-blue-300 to-blue-500 flex justify-center align-middle">
+		<div class="my-aut flex flex-col justify-center gap-5">
+			<img src="{{ public('img/logo-harmony.png') }}" alt="Harmony Framework" class="w-full">
+			<div class="flex justify-center gap-3">
+				<a href="https://bettadevindonesia.github.io/harmony-docs" target="_blank" class="py-2 px-3 bg-zinc-50 hover:bg-zinc-900 rounded-md font-semibold hover:text-blue-400 delay-100">Documentation</a>
+				<a href="https://github.com/harmony-betta/harmony" target="_blank" class="py-2 px-3 bg-zinc-50 hover:bg-zinc-900 rounded-md font-semibold hover:text-blue-400 delay-100">GitHub Repo</a>
+			</div>
+			<div>
+                <p>Try to change conent at:</p>
+				<pre class="text-white text-sm font-mono whitespace-normal bg-gray-900 p-4 rounded-md shadow-md">
+                    <code>resources/views/welcome.twig</code>
+                </pre>
+			</div>
+		</div>
+	</div>
+{% endblock %}

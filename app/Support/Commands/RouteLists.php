@@ -23,7 +23,7 @@ class RouteLists extends Command
 
         require_once dirname(dirname(dirname(__DIR__))).'/bootstrap/app.php';
 
-        $routes = $app->getContainer()->router->getRoutes();
+        $routes = app()->getRouteCollector()->getRoutes();
         
         $rows = array();
         foreach ($routes as $route) {

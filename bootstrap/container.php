@@ -1,4 +1,5 @@
 <?php
+
 /** 
  * -----------------------------------------------------
  *      SELAMAT DATANG DI HARMONY FRAMWORK             |
@@ -14,79 +15,73 @@
  * 
  */
 
+use Phpmig\Adapter\Illuminate\Database;
+use Slim\Views\Twig;
+use Slim\Views\TwigExtension;
+use Twig\Loader\FilesystemLoader;
+
 /**
  * DANGER ZONE !!!
  */
-$container = $app->getContainer();
-
 $capsule = new \Illuminate\Database\Capsule\Manager;
-$capsule->addConnection($container['settings']['db']);
+$capsule->addConnection($settings['db']);
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
 
-$container['notFoundHandler'] = function ($container) {
+$container->set('notFoundHandler', function ($container) {
     return function ($request, $response) use ($container) {
-        return $container['view']->render($response, 'error/404.twig', ['status' => 404, 'message' => 'The page you seek does not exist.']);
+        return $container->get('view')->render($response, 'error/404.twig', ['status' => 404, 'message' => 'The page you seek does not exist.']);
     };
-};
+});
 
-$container['notAllowedHandler'] = function ($c) {
+$container->set('notAllowedHandler', function ($c) {
     return function ($request, $response, $methods) use ($c) {
-        return $container['view']->render($response, 'error/404.twig', ['status' => 405, 'message' => 'The page you seek does not allowed for you.']);
+        return $c->get('view')->render($response, 'error/404.twig', ['status' => 405, 'message' => 'The page you seek does not allowed for you.']);
     };
-};
+});
 
-$container['db'] = function($container) use ($capsule) {
+$container->set('db', function () use ($capsule) {
     return $capsule;
-};
+});
 
-$container['mailer'] = function($container) {
-    $mailer = new Nette\Mail\SmtpMailer($container['settings']['nate.email']);
+$container->set('mailer', function () use ($settings) {
+    $mailer = new Nette\Mail\SmtpMailer($settings['nate.email']);
     return $mailer;
-};
+});
 
-$container['phpmig.adapter'] = function ($container) {
-    return new Adapter\Illuminate\Database($container['db'], 'migrations');
-};
+$container->set('phpmig.adapter', function ($container) {
+    return new Database($container['db'], 'migrations');
+});
 
-$container['phpmig.migrations_path'] = function () {
+$container->set('phpmig.migrations_path', function () {
     return dirname(__DIR__) . '/app/Database/migrations';
-};
+});
 
-$container['schema'] = function () {
-    return Capsule::schema();
-};
+$container->set('schema', function () use ($capsule) {
+    return $capsule->schema();
+});
 
-$container['flash'] = function($container){
+$container->set('flash', function ($container) {
     return new \Slim\Flash\Messages;
-};
+});
 
-$container['view'] = function($container) {
-    $view = new \Slim\Views\Twig(dirname(__DIR__) . '/resources/views', [
-            'debug' => true,
-            'cache' => false,
-    ]);
+$container->set('request', function() {
+    return \Slim\Psr7\Factory\ServerRequestFactory::createFromGlobals();
+});
 
-    $view->addExtension(new \Slim\Views\TwigExtension(
-        $container->router,
-        $container->request->getUri()
-    ));
-    $view->addExtension(new \App\Support\Views\DebugExtension);
+$container->set('storage', function () use ($settings) {
+    return $settings['storage'];
+});
 
-    require dirname(__DIR__) . '/app/Support/Helpers/bootstrap.php';
-
-    return $view;
-};
-
-$conteiner['storage'] = function($conteiner) {
-    return $conteiner['settings']['storage'];
-};
-
-$container['validator'] = function($container) {
+$container->set('validator', function () {
     return new \App\Support\Validation\Validator;
-};
+});
 
-$container['csrf'] = function($container){
-    $guard = new Slim\Csrf\Guard();
-    return $guard;
-};
+$container->set('responseFactory', function () {
+    return new \Slim\Psr7\Factory\ResponseFactory();
+});
+
+$container->set('csrf', function ($container) {
+    $responseFactory = $container->get('responseFactory');
+    return new \Slim\Csrf\Guard($responseFactory);
+});

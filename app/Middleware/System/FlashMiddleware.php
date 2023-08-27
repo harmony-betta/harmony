@@ -2,12 +2,17 @@
 
 namespace App\Middleware\System;
 
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
+use Slim\Views\Twig;
+
 class FlashMiddleware extends Middleware
 {
-    public function __invoke($request, $response, $next)
+    public function __invoke(Request $request, RequestHandler $next)
     {
-        $this->container->view->getEnvironment()->addGlobal('flash', $this->container->flash);
-        $response = $next($request, $response);
+        Twig::fromRequest($request)->getEnvironment()->addGlobal('flash', container('flash'));
+        
+        $response = $next->handle($request);
         return $response;
     }
 }

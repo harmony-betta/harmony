@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\Twig as View;
 
 class ControllerName extends Controller
@@ -9,12 +11,12 @@ class ControllerName extends Controller
     /**
      * Method INDEX
      *
-     * Ini adalah default dari ControllerName
+     * This is the default controller for ControllerName
      * @param [object] $request
      * @param [object] $response
      * @return object
      * 
-     * Rendering view sesuai routes request
+     * Rendering view based on route request
      * routes/
      * |__ web.php
      * 
@@ -23,20 +25,8 @@ class ControllerName extends Controller
 
      # protected $property = value|blank;
 
-    public function index($request, $response)
+    public function index(Request $request, Response $response)
     {
-        /**
-         * Anda bisa menyesuaikan view yang diiginkan dengan menggunakan
-         * Psuedo Variabel [ $this ] yang mewakili container atau
-         * wadah dari MVC Application ini.
-         * 
-         * ***********************************************************
-         * 
-         *      $this->view->render($response, 'page.twig');         *
-         * 
-         * ***********************************************************
-         */
-
-         # code..
+        return View::fromRequest($request)->render($response, 'view.twig');
     }
 }

@@ -70,7 +70,7 @@ class GeneratorController extends Command
                 make_path($controllerName);
                 if (file_put_contents($controllerName, $newFileContent, FILE_APPEND) !== false && file_put_contents(
                     dirname(dirname(dirname(__DIR__)))."/config/app.container.php",
-                    "\$container['$pagename'] = function(\$container) {\n\treturn new \App\Controllers\\$pagename(\$container);\n};\n\n",
+                    "\n\$container->set('$pagename', function(\$container) {\n\treturn new \App\Controllers\\$pagename(\$container);\n});\n\n",
                     FILE_APPEND
                 ) !== false ) {
                     $text = "File created (" . basename($controllerName) . ") in app/Controllers/".$pagename.".php";
